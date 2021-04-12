@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=development webpack serve --open --config ./config/webpack.config.js --mode development",
+    "start": "NODE_ENV=development webpack serve --open --config ./config/webpack.config.js --mode development --hot",
     "build": "NODE_ENV=production  webpack --config ./config/webpack.config.js --mode production"
   },
   "keywords": [],

@@ -8,11 +8,6 @@ const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || "10000"
 )
 
-// style files regexes
-const cssRegex = /\.css$/
-const cssModuleRegex = /\.module\.css$/
-const lessRegex = /\.less$/
-
 module.exports = function (webpackEnv) {
   const isEnvDevelopment = process.env.NODE_ENV === "development"
   const isEnvProduction = process.env.NODE_ENV === "production"
@@ -30,25 +25,26 @@ module.exports = function (webpackEnv) {
       extensions: [".ts", ".tsx", ".js"],
       alias: {
         process: "process/browser",
+        "@": path.join(__dirname, "../src"),
       },
     },
-    optimization: {
-      minimize: isEnvProduction,
-      minimizer: [],
-      // Automatically split vendor and commons
-      // https://twitter.com/wSokra/status/969633336732905474
-      // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
-      // splitChunks: {
-      //   chunks: "all",
-      //   name: false,
-      // },
-      // // Keep the runtime chunk separated to enable long term caching
-      // // https://twitter.com/wSokra/status/969679223278505985
-      // // https://github.com/facebook/create-react-app/issues/5358
-      // runtimeChunk: {
-      //   name: (entrypoint) => `runtime-${entrypoint.name}`,
-      // },
-    },
+    // optimization: {
+    //   minimize: isEnvProduction,
+    //   minimizer: [],
+    // Automatically split vendor and commons
+    // https://twitter.com/wSokra/status/969633336732905474
+    // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
+    // splitChunks: {
+    //   chunks: "all",
+    //   name: false,
+    // },
+    // // Keep the runtime chunk separated to enable long term caching
+    // // https://twitter.com/wSokra/status/969679223278505985
+    // // https://github.com/facebook/create-react-app/issues/5358
+    // runtimeChunk: {
+    //   name: (entrypoint) => `runtime-${entrypoint.name}`,
+    // },
+    // },
     module: {
       rules: [
         {
@@ -81,7 +77,7 @@ module.exports = function (webpackEnv) {
               },
             },
             {
-              test: cssRegex,
+              test: /\.css$/,
               include: /\.module\.css$/,
               use: [
                 {
@@ -97,7 +93,7 @@ module.exports = function (webpackEnv) {
               ],
             },
             {
-              test: cssRegex,
+              test: /\.css$/,
               exclude: /\.module\.css$/,
               use: [
                 {
@@ -109,7 +105,7 @@ module.exports = function (webpackEnv) {
               ],
             },
             {
-              test: lessRegex,
+              test: /\.less$/,
               use: [
                 {
                   loader: "style-loader",
@@ -156,6 +152,7 @@ module.exports = function (webpackEnv) {
       new HtmlWebpackPlugin({
         template: path.join(__dirname, "../public", "index.html"),
       }),
+      // isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
       isEnvProduction &&
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
@@ -169,6 +166,7 @@ module.exports = function (webpackEnv) {
       contentBase: path.join(__dirname, "../build"),
       compress: true,
       port: 4000,
+      hot: true,
     },
   }
 }
