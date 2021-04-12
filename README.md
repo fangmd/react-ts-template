@@ -7,3 +7,12 @@ react-ts
 从 0 开始搭建 react
 
 
+# List
+
+- [x] Add normalize.css
+- [x] Less
+- [x] router
+- [ ] mobx
+- [ ] EsLint
+- [x] axios
+

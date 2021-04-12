@@ -167,6 +167,10 @@ module.exports = function (webpackEnv) {
       compress: true,
       port: 4000,
       hot: true,
+      historyApiFallback: true, // router history 模式下需要
+      proxy: {
+        '/user': 'http://api.fangmingdong.com/',
+      },
     },
   }
 }

@@ -1,5 +1,10 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import { BrowserRouter, Route } from "react-router-dom"
+import "normalize.css"
+import HomePage from "./pages/home"
+import MinePage from "./pages/mine"
+
 import "./assets/css/base.css"
 import "@/assets/css/base-tmp.less"
 
@@ -8,8 +13,11 @@ console.log(env)
 
 const App = () => (
   <>
-    <h1>My React and TypeScript App!23 {env}</h1>
-    <h2>My</h2>
+    <BrowserRouter>
+      <Route path="/mine" exact component={MinePage}></Route>
+      <Route path="/home" exact component={HomePage}></Route>
+      <Route path="/" exact component={HomePage}></Route>
+    </BrowserRouter>
   </>
 )
 
