@@ -7,7 +7,7 @@ const MinePage = observer(() => {
   const store = useStore()
   return (
     <>
-      <h1>MinePage</h1>
+      <h1 className="title">MinePage</h1>
       <p>user name: {JSON.stringify(store)}</p>
       <Link to="/home">To HomePage</Link>
     </>

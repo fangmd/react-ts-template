@@ -13,6 +13,7 @@ react-ts
 - [x] Less
 - [x] router
 - [x] mobx-react-lite
-- [ ] ESLint
 - [x] axios
+- [ ] ESLint
+- [ ] Prettier
 

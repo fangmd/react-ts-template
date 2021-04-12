@@ -5,7 +5,7 @@ import "normalize.css"
 import "./assets/css/base.css"
 import "@/assets/css/base-tmp.less"
 import HomePage from "./pages/home"
-import MinePage from "./pages/mine"
+import MinePage from "./pages/mine/mine"
 import { Provider } from "./store/context"
 
 const env = process.env.NODE_ENV
