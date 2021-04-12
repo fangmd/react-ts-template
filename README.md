@@ -12,7 +12,7 @@ react-ts
 - [x] Add normalize.css
 - [x] Less
 - [x] router
-- [ ] mobx
-- [ ] EsLint
+- [x] mobx-react-lite
+- [ ] ESLint
 - [x] axios
 
