@@ -3,22 +3,14 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000')
 
 module.exports = function (webpackEnv) {
-  const isEnvDevelopment = process.env.NODE_ENV === 'development'
+  // const isEnvDevelopment = process.env.NODE_ENV === 'development'
   const isEnvProduction = process.env.NODE_ENV === 'production'
 
   return {
-    mode: isEnvProduction ? 'production' : 'development',
-    devtool: isEnvProduction ? false : 'cheap-module-source-map',
-    entry: {
-      app: isEnvProduction
-        ? ['@babel/polyfill', path.join(__dirname, '../src', 'index.tsx')]
-        : [path.join(__dirname, '../src', 'index.tsx')],
-    },
     target: 'web',
     resolve: {
       extensions: ['.ts', '.tsx', '.js'],
@@ -27,23 +19,6 @@ module.exports = function (webpackEnv) {
         '@': path.join(__dirname, '../src'),
       },
     },
-    // optimization: {
-    //   minimize: isEnvProduction,
-    //   minimizer: [],
-    //   // Automatically split vendor and commons
-    //   // https://twitter.com/wSokra/status/969633336732905474
-    //   // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
-    //   splitChunks: {
-    //     chunks: 'all',
-    //     // name: false,
-    //   },
-    //   // Keep the runtime chunk separated to enable long term caching
-    //   // https://twitter.com/wSokra/status/969679223278505985
-    //   // https://github.com/facebook/create-react-app/issues/5358
-    //   runtimeChunk: {
-    //     name: (entrypoint) => `runtime-${entrypoint.name}`,
-    //   },
-    // },
     module: {
       rules: [
         {
@@ -80,7 +55,12 @@ module.exports = function (webpackEnv) {
               include: /\.module\.css$/,
               use: [
                 {
-                  loader: 'style-loader',
+                  loader: isEnvProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+                  options: isEnvProduction
+                    ? {
+                        publicPath: '../../',
+                      }
+                    : {},
                 },
                 {
                   loader: 'css-loader',
@@ -96,7 +76,12 @@ module.exports = function (webpackEnv) {
               exclude: /\.module\.css$/,
               use: [
                 {
-                  loader: 'style-loader',
+                  loader: isEnvProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+                  options: isEnvProduction
+                    ? {
+                        publicPath: '../../',
+                      }
+                    : {},
                 },
                 {
                   loader: 'css-loader',
@@ -110,7 +95,12 @@ module.exports = function (webpackEnv) {
               test: /\.less$/,
               use: [
                 {
-                  loader: 'style-loader',
+                  loader: isEnvProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+                  options: isEnvProduction
+                    ? {
+                        publicPath: '../../',
+                      }
+                    : {},
                 },
                 {
                   loader: 'css-loader',
@@ -143,11 +133,6 @@ module.exports = function (webpackEnv) {
         },
       ],
     },
-    output: {
-      // filename: "bundle.js", //"[name].js"
-      filename: isEnvProduction ? 'static/js/[name].[contenthash:8].js' : isEnvDevelopment && 'static/js/bundle.js',
-      path: path.resolve(__dirname, '../build'),
-    },
     plugins: [
       new webpack.ProvidePlugin({
         process: 'process/browser',
@@ -155,22 +140,10 @@ module.exports = function (webpackEnv) {
       new HtmlWebpackPlugin({
         template: path.join(__dirname, '../public', 'index.html'),
       }),
-      isEnvProduction &&
-        new MiniCssExtractPlugin({
-          filename: 'static/css/[name].[contenthash:8].css',
-          chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
-        }),
-      isEnvProduction && new CleanWebpackPlugin(),
-    ].filter(Boolean),
-    devServer: {
-      contentBase: path.join(__dirname, '../build'),
-      compress: true,
-      port: 4000,
-      hot: true,
-      historyApiFallback: true, // router history 模式下需要
-      proxy: {
-        '/user': 'http://api.fangmingdong.com/',
-      },
-    },
+      new MiniCssExtractPlugin({
+        filename: 'static/css/[name].[contenthash:8].css',
+        chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+      }),
+    ],
   }
 }
