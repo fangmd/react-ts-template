@@ -16,4 +16,5 @@ react-ts
 - [x] axios
 - [x] ESLint
 - [x] Prettier
+- [ ] CDN
 

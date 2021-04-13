@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -29,19 +30,19 @@ module.exports = function (webpackEnv) {
     // optimization: {
     //   minimize: isEnvProduction,
     //   minimizer: [],
-    // Automatically split vendor and commons
-    // https://twitter.com/wSokra/status/969633336732905474
-    // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
-    // splitChunks: {
-    //   chunks: "all",
-    //   name: false,
-    // },
-    // // Keep the runtime chunk separated to enable long term caching
-    // // https://twitter.com/wSokra/status/969679223278505985
-    // // https://github.com/facebook/create-react-app/issues/5358
-    // runtimeChunk: {
-    //   name: (entrypoint) => `runtime-${entrypoint.name}`,
-    // },
+    //   // Automatically split vendor and commons
+    //   // https://twitter.com/wSokra/status/969633336732905474
+    //   // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
+    //   splitChunks: {
+    //     chunks: 'all',
+    //     // name: false,
+    //   },
+    //   // Keep the runtime chunk separated to enable long term caching
+    //   // https://twitter.com/wSokra/status/969679223278505985
+    //   // https://github.com/facebook/create-react-app/issues/5358
+    //   runtimeChunk: {
+    //     name: (entrypoint) => `runtime-${entrypoint.name}`,
+    //   },
     // },
     module: {
       rules: [
@@ -102,11 +103,6 @@ module.exports = function (webpackEnv) {
                 },
                 {
                   loader: 'postcss-loader',
-                  options: {
-                    postcssOptions: {
-                      plugins: [require('autoprefixer')],
-                    },
-                  },
                 },
               ],
             },
@@ -126,11 +122,6 @@ module.exports = function (webpackEnv) {
                 },
                 {
                   loader: 'postcss-loader',
-                  options: {
-                    postcssOptions: {
-                      plugins: [require('autoprefixer')],
-                    },
-                  },
                 },
                 {
                   loader: 'less-loader',
@@ -164,11 +155,8 @@ module.exports = function (webpackEnv) {
       new HtmlWebpackPlugin({
         template: path.join(__dirname, '../public', 'index.html'),
       }),
-      // isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
       isEnvProduction &&
         new MiniCssExtractPlugin({
-          // Options similar to the same options in webpackOptions.output
-          // both options are optional
           filename: 'static/css/[name].[contenthash:8].css',
           chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
         }),

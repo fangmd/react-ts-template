@@ -1,7 +1,8 @@
-import axios from "@/request"
+import axios from '@/request'
+import { AxiosResponse } from 'axios'
 
 export default {
-  getUser() {
-    return axios.get("/user")
+  getUser(): Promise<AxiosResponse> {
+    return axios.get('/user')
   },
 }
