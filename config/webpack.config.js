@@ -1,31 +1,29 @@
-const path = require("path")
-const webpack = require("webpack")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const imageInlineSizeLimit = parseInt(
-  process.env.IMAGE_INLINE_SIZE_LIMIT || "10000"
-)
+const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000')
 
 module.exports = function (webpackEnv) {
-  const isEnvDevelopment = process.env.NODE_ENV === "development"
-  const isEnvProduction = process.env.NODE_ENV === "production"
+  const isEnvDevelopment = process.env.NODE_ENV === 'development'
+  const isEnvProduction = process.env.NODE_ENV === 'production'
 
   return {
-    mode: isEnvProduction ? "production" : "development",
-    devtool: isEnvProduction ? false : "cheap-module-source-map",
+    mode: isEnvProduction ? 'production' : 'development',
+    devtool: isEnvProduction ? false : 'cheap-module-source-map',
     entry: {
       app: isEnvProduction
-        ? ["@babel/polyfill", path.join(__dirname, "../src", "index.tsx")]
-        : [path.join(__dirname, "../src", "index.tsx")],
+        ? ['@babel/polyfill', path.join(__dirname, '../src', 'index.tsx')]
+        : [path.join(__dirname, '../src', 'index.tsx')],
     },
-    target: "web",
+    target: 'web',
     resolve: {
-      extensions: [".ts", ".tsx", ".js"],
+      extensions: ['.ts', '.tsx', '.js'],
       alias: {
-        process: "process/browser",
-        "@": path.join(__dirname, "../src"),
+        process: 'process/browser',
+        '@': path.join(__dirname, '../src'),
       },
     },
     // optimization: {
@@ -54,26 +52,26 @@ module.exports = function (webpackEnv) {
           oneOf: [
             {
               test: [/\.avif$/],
-              loader: require.resolve("url-loader"),
+              loader: require.resolve('url-loader'),
               options: {
                 limit: imageInlineSizeLimit,
-                mimetype: "image/avif",
-                name: "static/media/[name].[hash:8].[ext]",
+                mimetype: 'image/avif',
+                name: 'static/media/[name].[hash:8].[ext]',
               },
             },
             {
               test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-              loader: require.resolve("url-loader"),
+              loader: require.resolve('url-loader'),
               options: {
                 limit: imageInlineSizeLimit,
-                name: "static/media/[name].[hash:8].[ext]",
+                name: 'static/media/[name].[hash:8].[ext]',
               },
             },
             {
               test: /\.(ts|js)x?$/,
               exclude: /node_modules/,
               use: {
-                loader: "babel-loader?cacheDirectory=true",
+                loader: 'babel-loader?cacheDirectory=true',
               },
             },
             {
@@ -81,10 +79,10 @@ module.exports = function (webpackEnv) {
               include: /\.module\.css$/,
               use: [
                 {
-                  loader: "style-loader",
+                  loader: 'style-loader',
                 },
                 {
-                  loader: "css-loader",
+                  loader: 'css-loader',
                   options: {
                     importLoaders: 1,
                     modules: true,
@@ -97,10 +95,18 @@ module.exports = function (webpackEnv) {
               exclude: /\.module\.css$/,
               use: [
                 {
-                  loader: "style-loader",
+                  loader: 'style-loader',
                 },
                 {
-                  loader: "css-loader",
+                  loader: 'css-loader',
+                },
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                    postcssOptions: {
+                      plugins: [require('autoprefixer')],
+                    },
+                  },
                 },
               ],
             },
@@ -108,10 +114,10 @@ module.exports = function (webpackEnv) {
               test: /\.less$/,
               use: [
                 {
-                  loader: "style-loader",
+                  loader: 'style-loader',
                 },
                 {
-                  loader: "css-loader",
+                  loader: 'css-loader',
                   options: {
                     // sourceMap: true,
                     // modules: true,
@@ -119,19 +125,27 @@ module.exports = function (webpackEnv) {
                   },
                 },
                 {
-                  loader: "less-loader",
+                  loader: 'postcss-loader',
+                  options: {
+                    postcssOptions: {
+                      plugins: [require('autoprefixer')],
+                    },
+                  },
+                },
+                {
+                  loader: 'less-loader',
                 },
               ],
             },
             {
-              loader: require.resolve("file-loader"),
+              loader: require.resolve('file-loader'),
               // Exclude `js` files to keep "css" loader working as it injects
               // its runtime that would otherwise be processed through "file" loader.
               // Also exclude `html` and `json` extensions so they get processed
               // by webpacks internal loaders.
               exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
               options: {
-                name: "static/media/[name].[hash:8].[ext]",
+                name: 'static/media/[name].[hash:8].[ext]',
               },
             },
           ],
@@ -140,30 +154,28 @@ module.exports = function (webpackEnv) {
     },
     output: {
       // filename: "bundle.js", //"[name].js"
-      filename: isEnvProduction
-        ? "static/js/[name].[contenthash:8].js"
-        : isEnvDevelopment && "static/js/bundle.js",
-      path: path.resolve(__dirname, "../build"),
+      filename: isEnvProduction ? 'static/js/[name].[contenthash:8].js' : isEnvDevelopment && 'static/js/bundle.js',
+      path: path.resolve(__dirname, '../build'),
     },
     plugins: [
       new webpack.ProvidePlugin({
-        process: "process/browser",
+        process: 'process/browser',
       }),
       new HtmlWebpackPlugin({
-        template: path.join(__dirname, "../public", "index.html"),
+        template: path.join(__dirname, '../public', 'index.html'),
       }),
       // isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
       isEnvProduction &&
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
-          filename: "static/css/[name].[contenthash:8].css",
-          chunkFilename: "static/css/[name].[contenthash:8].chunk.css",
+          filename: 'static/css/[name].[contenthash:8].css',
+          chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
         }),
       isEnvProduction && new CleanWebpackPlugin(),
     ].filter(Boolean),
     devServer: {
-      contentBase: path.join(__dirname, "../build"),
+      contentBase: path.join(__dirname, '../build'),
       compress: true,
       port: 4000,
       hot: true,

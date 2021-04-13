@@ -1,13 +1,13 @@
-import { common } from "@/api"
-import { useStore } from "@/store/context"
-import { observer } from "mobx-react-lite"
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { common } from '@/api'
+import { useStore } from '@/store/context'
+import { observer } from 'mobx-react-lite'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 // import './index2.css'
-import "./index.less"
+import './index.less'
 
 const HomePage = observer(() => {
-  const [getResult, setGetResult] = useState("")
+  const [getResult, setGetResult] = useState('')
   const store = useStore()
 
   const testGetRequest = async () => {
@@ -17,13 +17,13 @@ const HomePage = observer(() => {
 
   const changeUserName = () => {
     console.log(store)
-    store.userStore.setUserName("asds")
+    store.userStore.setUserName('asds')
   }
 
   return (
     <div className="Home">
       <h1 className="title">HomePage</h1>
-      <button onClick={testGetRequest}>Test get request</button>
+      <button onClick={testGetRequest}>Test get requestTest</button>
       <p>{getResult}</p>
       <button onClick={changeUserName}>Change User Name</button>
       <p>user name: {JSON.stringify(store.userStore.user)}</p>
