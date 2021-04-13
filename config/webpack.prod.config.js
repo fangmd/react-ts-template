@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const TerserPlugin = require("terser-webpack-plugin");
 
 
 const { merge } = require('webpack-merge')
@@ -16,7 +17,7 @@ const webpackProdConfig = {
     runtimeChunk: {
       name: 'manifest',
     },
-    minimizer: [], // [new UglifyJsPlugin({...})]
+    minimizer: [new TerserPlugin()], // [new UglifyJsPlugin({...})]
     splitChunks: {
       chunks: 'async',
       minSize: 30000,
