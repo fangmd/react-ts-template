@@ -3,7 +3,6 @@ import { useStore } from '@/store/context'
 import { observer } from 'mobx-react-lite'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-// import './index2.css'
 import './index.less'
 
 const HomePage = observer(() => {
