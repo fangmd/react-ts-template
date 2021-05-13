@@ -2,6 +2,7 @@ import { common } from '@/api'
 import { useStore } from '@/store/context'
 import { observer } from 'mobx-react-lite'
 import React, { useState } from 'react'
+import Test from '@/components/Test'
 import { Link } from 'react-router-dom'
 import './index.less'
 
@@ -22,6 +23,7 @@ const HomePage = observer(() => {
   return (
     <div className="Home">
       <h1 className="title">HomePage</h1>
+      <Test />
       <button onClick={testGetRequest}>Test get requestTest</button>
       <p>{getResult}</p>
       <button onClick={changeUserName}>Change User Name</button>
