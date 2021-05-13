@@ -18,3 +18,13 @@ react-ts
 - [x] Prettier
 - [ ] CDN
 
+## webpack
+
+- [x] webpack-bundle-analyzer 包体积大小分析
+- [x] compression-webpack-plugin, gzip 压缩 js,css 静态资源
+- [x] 路由懒加载，加快首页加载
+- [x] webpack-dev-server, 方便本地运行项目
+- [x] clean-webpack-plugin, 删除上次打包的文件
+
+
+js 分包

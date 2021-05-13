@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const { merge } = require('webpack-merge')
 const webpackConfigBase = require('./webpack.base.config')
@@ -66,6 +67,7 @@ const webpackProdConfig = {
       minRatio: 0.8,
       deleteOriginalAssets: false, //是否删除源文件,删除的话不会有js文件，都是gz文件
     }),
+    new BundleAnalyzerPlugin(),
   ],
 }
 
