@@ -3,19 +3,19 @@
  * 请求拦截、响应拦截、错误统一处理
  */
 
-import axios from "axios"
-import createHeader from "./custom-header"
-const JSONbigString = require("json-bigint")({ storeAsString: true })
+import axios from 'axios'
+import createHeader from './custom-header'
+const JSONbigString = require('json-bigint')({ storeAsString: true })
 
 // 创建axios实例
 const instance = axios.create({
   timeout: 1000 * 10,
   headers: {
     get: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
     },
     post: {
-      "Content-Type": "application/json;charset=utf-8",
+      'Content-Type': 'application/json;charset=utf-8',
     },
   },
   // 解决相应数据 bingint 精度丢失问题
