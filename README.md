@@ -27,4 +27,7 @@ react-ts
 - [x] clean-webpack-plugin, 删除上次打包的文件
 
 
+speed-measure-webpack-plugin
+[优化项目启动时间](https://juejin.cn/post/6961203055257714702)
+
 js 分包
