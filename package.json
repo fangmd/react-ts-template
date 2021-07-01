@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@loadable/component": "^5.15.0",
     "axios": "^0.21.1",
     "json-bigint": "^1.0.0",
     "mobx": "^6.2.0",

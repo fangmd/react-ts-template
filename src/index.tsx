@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react'
+import loadable from '@loadable/component'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
 import 'normalize.css'
@@ -6,8 +7,8 @@ import './assets/css/base.css'
 import '@/assets/css/base-tmp.less'
 import { Provider } from './store/context'
 
-const HomePage = lazy(() => import(/* webpackChunkName: 'HomePage'*/ './pages/home'))
-const MinePage = lazy(() => import(/* webpackChunkName: 'MinePage'*/ './pages/mine/mine'))
+const HomePage = loadable(() => import(/* webpackChunkName: 'HomePage'*/ './pages/home'))
+const MinePage = loadable(() => import(/* webpackChunkName: 'MinePage'*/ './pages/mine/mine'))
 
 const env = process.env.NODE_ENV
 console.log(env)
