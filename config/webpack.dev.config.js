@@ -13,6 +13,7 @@ const webpackConfigDev = {
   output: {
     filename: 'static/js/bundle.js',
     path: path.resolve(__dirname, '../build'),
+    publicPath: '/',
   },
   devServer: {
     contentBase: path.join(__dirname, '../build'),
