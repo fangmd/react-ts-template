@@ -17,6 +17,7 @@ react-ts
 - [x] ESLint
 - [x] Prettier
 - [ ] CDN
+- [x] css 添加前缀(npm install autoprefixer postcss postcss-loader -D)
 
 ## webpack
 

@@ -106,6 +106,7 @@ module.exports = function (webpackEnv) {
                 {
                   loader: 'css-loader',
                   options: {
+                    // modules: true,
                     // sourceMap: true,
                     // modules: true,
                     // localIdentName: "[local]___[hash:base64:5]",
