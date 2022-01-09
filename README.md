@@ -1,6 +1,6 @@
 
 
-react-ts
+react-ts-h5
 
 >react ts 项目模版
 
