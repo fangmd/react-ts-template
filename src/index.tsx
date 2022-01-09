@@ -6,12 +6,14 @@ import 'normalize.css'
 import './assets/css/base.css'
 import '@/assets/css/base-tmp.less'
 import { Provider } from './store/context'
+import { add } from '@passon/js-lib-template'
 
 const HomePage = loadable(() => import(/* webpackChunkName: 'HomePage'*/ './pages/home'))
 const MinePage = loadable(() => import(/* webpackChunkName: 'MinePage'*/ './pages/mine/mine'))
 
 const env = process.env.NODE_ENV
 console.log(env)
+
 
 const App = () => (
   <Provider>
