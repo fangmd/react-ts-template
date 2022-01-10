@@ -8,6 +8,8 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const { merge } = require('webpack-merge')
 const webpackConfigBase = require('./webpack.base.config')
 
+const cdnDomain = 'https://h5-cdn.mountainseas.cn/'
+
 const webpackProdConfig = {
   mode: 'production',
   entry: {
@@ -55,6 +57,7 @@ const webpackProdConfig = {
   output: {
     filename: 'static/js/[name].[contenthash:8].js',
     path: path.resolve(__dirname, '../build'),
+    // publicPath: cdnDomain,
     publicPath: '/',
   },
   plugins: [
@@ -74,6 +77,6 @@ const baseConfig = webpackConfigBase('production')
 
 const resultConfig = merge(baseConfig, webpackProdConfig)
 
-console.log(resultConfig)
+// console.log(resultConfig)
 
 module.exports = resultConfig
