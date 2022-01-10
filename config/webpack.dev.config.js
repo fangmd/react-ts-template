@@ -16,7 +16,12 @@ const webpackConfigDev = {
     publicPath: '/',
   },
   devServer: {
-    contentBase: path.join(__dirname, '../build'),
+    static: {
+      directory: path.resolve(__dirname, '../build'),
+      staticOptions: {},
+      serveIndex: true,
+      watch: true,
+    },
     compress: true,
     port: 4000,
     hot: true,
