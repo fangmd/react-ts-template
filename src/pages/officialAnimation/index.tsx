@@ -9,6 +9,9 @@ import './index.less'
 
 /**
  * 响应式 Demo
+ * Medium	md	≥768px
+ * 
+ * Extra large	xl	≥1200px
  */
 const OfficialAnimationPage = observer(() => {
   return (
@@ -26,7 +29,17 @@ const OfficialAnimationPage = observer(() => {
         </div>
       </div>
 
-      <div className="container-md">100% wide until medium breakpoint</div>
+      <div className="container-md">
+        100% wide until medium breakpoint
+        <div className="row align-items-start">
+          <div className="col-md-4 col-6 block">One of three columns</div>
+          <div className="col-md-4 col-6 block">One of three columns</div>
+          <div className="col-md-4 col-6 block">One of three columns</div>
+          <div className="col-md-4 col-6 block">One of three columns</div>
+          <div className="col-md-4 col-6 block">One of three columns</div>
+          <div className="col-md-4 col-6 block">One of three columns</div>
+        </div>
+      </div>
       <div className="container-lg">100% wide until large breakpoint</div>
       <div className="container-xl">100% wide until extra large breakpoint</div>
       <div className="container-xxl">100% wide until extra extra large breakpoint</div>
