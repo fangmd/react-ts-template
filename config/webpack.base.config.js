@@ -3,6 +3,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 const copyWebpackPlugin = require('copy-webpack-plugin')
 
 const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000')
@@ -143,7 +144,7 @@ module.exports = function (webpackEnv) {
         },
       ],
     },
-    plugins: [
+    plugins:  [
       new webpack.ProvidePlugin({
         process: 'process/browser',
       }),
@@ -155,22 +156,22 @@ module.exports = function (webpackEnv) {
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
       }),
-      // new copyWebpackPlugin({
-      //   patterns: [
-      //     {
-      //       from: path.join(__dirname, '../public'),
-      //       to: './',
-      //       filter: async (resourcePath) => {
-      //         console.log(resourcePath)
-      //         const isIndexHtml = resourcePath.endsWith('/public/index.html')
-      //         if (isIndexHtml) {
-      //           return false
-      //         }
-      //         return true
-      //       },
-      //     },
-      //   ],
-      // }),
+      new copyWebpackPlugin({
+        patterns: [
+          {
+            from: path.join(__dirname, '../public'),
+            to: './',
+            filter: async (resourcePath) => {
+              console.log(resourcePath)
+              const isIndexHtml = resourcePath.endsWith('/public/index.html')
+              if (isIndexHtml) {
+                return false
+              }
+              return true
+            },
+          },
+        ],
+      }),
     ],
   }
 }
