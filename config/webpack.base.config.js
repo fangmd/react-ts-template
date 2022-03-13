@@ -155,22 +155,22 @@ module.exports = function (webpackEnv) {
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
       }),
-      new copyWebpackPlugin({
-        patterns: [
-          {
-            from: path.join(__dirname, '../public'),
-            to: './',
-            filter: async (resourcePath) => {
-              console.log(resourcePath)
-              const isIndexHtml = resourcePath.endsWith('/public/index.html')
-              if (isIndexHtml) {
-                return false
-              }
-              return true
-            },
-          },
-        ],
-      }),
+      // new copyWebpackPlugin({
+      //   patterns: [
+      //     {
+      //       from: path.join(__dirname, '../public'),
+      //       to: './',
+      //       filter: async (resourcePath) => {
+      //         console.log(resourcePath)
+      //         const isIndexHtml = resourcePath.endsWith('/public/index.html')
+      //         if (isIndexHtml) {
+      //           return false
+      //         }
+      //         return true
+      //       },
+      //     },
+      //   ],
+      // }),
     ],
   }
 }

@@ -6,14 +6,14 @@ import 'normalize.css'
 import './assets/css/base.css'
 import '@/assets/css/base-tmp.less'
 import { Provider } from './store/context'
-import { add } from '@passon/js-lib-template'
+import 'bootstrap/dist/css/bootstrap.css'
 
 const HomePage = loadable(() => import(/* webpackChunkName: 'HomePage'*/ './pages/home'))
 const MinePage = loadable(() => import(/* webpackChunkName: 'MinePage'*/ './pages/mine/mine'))
+const OfficialAnimationPage = loadable(() => import(/* webpackChunkName: 'MinePage'*/ './pages/officialAnimation'))
 
 const env = process.env.NODE_ENV
 console.log(env)
-
 
 const App = () => (
   <Provider>
@@ -21,7 +21,7 @@ const App = () => (
       <BrowserRouter>
         <Route path="/mine" exact component={MinePage}></Route>
         <Route path="/home" exact component={HomePage}></Route>
-        <Route path="/" exact component={HomePage}></Route>
+        <Route path="/" exact component={OfficialAnimationPage}></Route>
       </BrowserRouter>
     </Suspense>
   </Provider>
