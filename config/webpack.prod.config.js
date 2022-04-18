@@ -10,6 +10,12 @@ const webpackConfigBase = require('./webpack.base.config')
 
 const cdnDomain = 'https://h5-cdn.mountainseas.cn/'
 
+function getEchartZrenderPkgName(module) {
+  const path = module.identifier();
+  const nameMatchRes = path.match(/[\\/]node_modules[\\/](echarts|zrender)([\\/]|$)/) || [];
+  return nameMatchRes[1];
+}
+
 const webpackProdConfig = {
   mode: 'production',
   entry: {
@@ -40,7 +46,7 @@ const webpackProdConfig = {
           name: 'vendor',
           chunks: 'initial',
           priority: -10,
-          reuseExistingChunk: false,
+          reuseExistingChunk: true,
           test: /node_modules\/(.*)\.js/,
         },
         styles: {
@@ -51,6 +57,26 @@ const webpackProdConfig = {
           reuseExistingChunk: true,
           enforce: true,
         },
+        vendorEcharts: {
+          chunks: 'async',
+          test: /[\\/]node_modules[\\/](echarts|zrender)([\\/]|$)/,
+          name: 'vendorEcharts',
+          name(module, chunks, cacheGroupKey) {
+            const name = getEchartZrenderPkgName(module);
+            return `vendor-${name}`;
+          },
+          priority: 31,
+        },
+        // 抽离 antd-vue
+          // vendorAntd: {
+          //   chunks: 'async',
+          //   test: /[\\/]node_modules[\\/](ant-design-vue)([\\/]|$)/,
+          //   name: 'vendorAntd',
+          //   priority: 31,
+          //   name(module, chunks, cacheGroupKey) {
+          //     return `vendor-antd`
+          //   },
+          // },
       },
     },
   },
