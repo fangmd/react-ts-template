@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import loadable from '@loadable/component'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'normalize.css'
 import './assets/css/base.css'
@@ -34,4 +34,4 @@ const App = () => (
   </Provider>
 )
 
-ReactDOM.render(<App />, document.getElementById('root'))
+createRoot(document.getElementById('root')!).render(<App />)
