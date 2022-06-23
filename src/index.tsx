@@ -23,7 +23,8 @@ const App = () => (
       <BrowserRouter>
         <Route path="/mine" exact component={MinePage}></Route>
         <Route path="/home" exact component={HomePage}></Route>
-        <Route path="/" exact component={OfficialAnimationPage}></Route>
+        <Route path="/" exact component={HomePage}></Route>
+        <Route path="/official" exact component={OfficialAnimationPage}></Route>
         <Route path="/context-demo" exact component={ContextDemo}></Route>
         <Route path="/scope-store-demo" exact component={ScopeStoreDemo}></Route>
         
