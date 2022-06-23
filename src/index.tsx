@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react'
 import loadable from '@loadable/component'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'normalize.css'
 import './assets/css/base.css'
 import '@/assets/css/base-tmp.less'
@@ -21,13 +21,14 @@ const App = () => (
   <Provider>
     <Suspense fallback={<div>Loading...</div>}>
       <BrowserRouter>
-        <Route path="/mine" exact component={MinePage}></Route>
-        <Route path="/home" exact component={HomePage}></Route>
-        <Route path="/" exact component={HomePage}></Route>
-        <Route path="/official" exact component={OfficialAnimationPage}></Route>
-        <Route path="/context-demo" exact component={ContextDemo}></Route>
-        <Route path="/scope-store-demo" exact component={ScopeStoreDemo}></Route>
-        
+        <Routes>
+          <Route path="/mine" element={<MinePage />}></Route>
+          <Route path="/home" element={<HomePage />}></Route>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/official" element={<OfficialAnimationPage />}></Route>
+          <Route path="/context-demo" element={<ContextDemo />}></Route>
+          <Route path="/scope-store-demo" element={<ScopeStoreDemo />}></Route>
+        </Routes>
       </BrowserRouter>
     </Suspense>
   </Provider>
