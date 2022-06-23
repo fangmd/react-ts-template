@@ -30,10 +30,10 @@ specifiers:
   cssnano-preset-advanced: ^5.2.5
   dotenv: ^16.0.0
   eslint: ^8.11.0
+  eslint-config-prettier: ^8.5.0
   eslint-plugin-react: ^7.29.3
   eslint-plugin-react-hooks: ^4.3.0
-  file-loader: ^6.2.0
-  html-webpack-plugin: ^5.5.0
+  html-webpack-plugin: ^5.3.1
   js-cookie: ^3.0.1
   json-bigint: ^1.0.0
   less: ^4.1.2
@@ -54,7 +54,6 @@ specifiers:
   style-loader: ^3.3.1
   ts-node: ^10.7.0
   typescript: ^4.6.2
-  url-loader: ^4.1.1
   webpack: ^5.70.0
   webpack-bundle-analyzer: ^4.5.0
   webpack-cli: ^4.9.2
@@ -102,9 +101,9 @@ devDependencies:
   cssnano-preset-advanced: 5.2.5_postcss@8.4.8
   dotenv: 16.0.0
   eslint: 8.11.0
+  eslint-config-prettier: 8.5.0_eslint@8.11.0
   eslint-plugin-react: 7.29.3_eslint@8.11.0
   eslint-plugin-react-hooks: 4.3.0_eslint@8.11.0
-  file-loader: 6.2.0_webpack@5.70.0
   html-webpack-plugin: 5.5.0_webpack@5.70.0
   less: 4.1.2
   less-loader: 10.2.0_less@4.1.2+webpack@5.70.0
@@ -117,7 +116,6 @@ devDependencies:
   style-loader: 3.3.1_webpack@5.70.0
   ts-node: 10.7.0_46pgf7sfaob72lkbqjt5y5pgiu
   typescript: 4.6.2
-  url-loader: 4.1.1_plzek67nbn24rjxjp577ruq77e
   webpack: 5.70.0_webpack-cli@4.9.2
   webpack-bundle-analyzer: 4.5.0
   webpack-cli: 4.9.2_bxwdbizv4mxxj4evh6mm6qm3ge
@@ -3109,6 +3107,15 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /eslint-config-prettier/8.5.0_eslint@8.11.0:
+    resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: 8.11.0
+    dev: true
+
   /eslint-plugin-react-hooks/4.3.0_eslint@8.11.0:
     resolution: {integrity: sha512-XslZy0LnMn+84NEG9jSGR6eGqaZB3133L8xewQo3fQagbQuGt7a63gf+P1NGKZavEYEC3UXaWEAA/AqDkuN6xA==}
     engines: {node: '>=10'}
@@ -3371,17 +3378,6 @@ packages:
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
       flat-cache: 3.0.4
-    dev: true
-
-  /file-loader/6.2.0_webpack@5.70.0:
-    resolution: {integrity: sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      webpack: ^4.0.0 || ^5.0.0
-    dependencies:
-      loader-utils: 2.0.2
-      schema-utils: 3.1.1
-      webpack: 5.70.0_webpack-cli@4.9.2
     dev: true
 
   /fill-range/7.0.1:
@@ -4207,15 +4203,6 @@ packages:
       big.js: 5.2.2
       emojis-list: 3.0.0
       json5: 1.0.1
-    dev: true
-
-  /loader-utils/2.0.2:
-    resolution: {integrity: sha512-TM57VeHptv569d/GKh6TAYdzKblwDNiumOdkFnejjD0XwTH87K90w3O7AiJRqdQoXygvi1VQTJTLGhJl7WqA7A==}
-    engines: {node: '>=8.9.0'}
-    dependencies:
-      big.js: 5.2.2
-      emojis-list: 3.0.0
-      json5: 2.2.0
     dev: true
 
   /locate-path/5.0.0:
@@ -5448,7 +5435,7 @@ packages:
     dev: true
 
   /relateurl/0.2.7:
-    resolution: {integrity: sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=}
+    resolution: {integrity: sha512-G08Dxvm4iDN3MLM0EsP62EDV9IuhXPR6blNz6Utcp7zyV3tr4HVNINt6MpaRWbxoOHT3Q7YN2P+jaHX8vUbgog==}
     engines: {node: '>= 0.10'}
     dev: true
 
@@ -6155,29 +6142,12 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /url-loader/4.1.1_plzek67nbn24rjxjp577ruq77e:
-    resolution: {integrity: sha512-3BTV812+AVHHOJQO8O5MkWgZ5aosP7GnROJwvzLS9hWDj00lZ6Z0wNak423Lp9PBZN05N+Jk/N5Si8jRAlGyWA==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      file-loader: '*'
-      webpack: ^4.0.0 || ^5.0.0
-    peerDependenciesMeta:
-      file-loader:
-        optional: true
-    dependencies:
-      file-loader: 6.2.0_webpack@5.70.0
-      loader-utils: 2.0.2
-      mime-types: 2.1.34
-      schema-utils: 3.1.1
-      webpack: 5.70.0_webpack-cli@4.9.2
-    dev: true
-
   /util-deprecate/1.0.2:
     resolution: {integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=}
     dev: true
 
   /utila/0.4.0:
-    resolution: {integrity: sha1-ihagXURWV6Oupe7MWxKk+lN5dyw=}
+    resolution: {integrity: sha512-Z0DbgELS9/L/75wZbro8xAnT50pBVFQZ+hUEueGDU5FN51YSCYM+jdxsfCiHjwNP/4LCDD0i/graKpeBnOXKRA==}
     dev: true
 
   /utils-merge/1.0.1:
