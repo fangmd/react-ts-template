@@ -48,6 +48,7 @@ specifiers:
   react-dom: ^18.2.0
   react-router-dom: ^6.3.0
   recoil: ^0.7.4
+  recoil-persist: ^4.2.0
   regenerator-runtime: ^0.13.9
   scrollreveal: ^4.0.9
   speed-measure-webpack-plugin: ^1.5.0
@@ -73,6 +74,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
   recoil: 0.7.4_biqbaboplfbrettd7655fr4n2y
+  recoil-persist: 4.2.0_recoil@0.7.4
   regenerator-runtime: 0.13.9
   scrollreveal: 4.0.9
 
@@ -5588,6 +5590,14 @@ packages:
     dependencies:
       resolve: 1.22.0
     dev: true
+
+  /recoil-persist/4.2.0_recoil@0.7.4:
+    resolution: {integrity: sha512-MHVfML9GxJP3RpkKR4F5rp7DtvzIvjWhowtMao/b7h2k4afMio/4sMAdUtltIrDaeVegH0Iga8Sx5XQ3oD7CzA==}
+    peerDependencies:
+      recoil: ^0.7.2
+    dependencies:
+      recoil: 0.7.4_biqbaboplfbrettd7655fr4n2y
+    dev: false
 
   /recoil/0.7.4_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-sCXvQGMfSprkNU4ZRkJV4B0qFQSURJMgsICqY1952WRlg66NMwYqi6n67vhnhn0qw4zHU1gHXJuMvRDaiRNFZw==}

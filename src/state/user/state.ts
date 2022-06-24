@@ -1,4 +1,7 @@
 import { atom, selector } from 'recoil'
+import { recoilPersist } from 'recoil-persist'
+
+const { persistAtom } = recoilPersist()
 
 interface User {
   name: string
@@ -8,6 +11,7 @@ interface User {
 export const userAtom = atom<User | undefined>({
   key: 'user',
   default: undefined,
+  effects_UNSTABLE: [persistAtom],
 })
 
 /** 是否登录 */
