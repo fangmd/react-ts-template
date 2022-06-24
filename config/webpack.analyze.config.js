@@ -71,7 +71,7 @@ const webpackProdConfig = {
   ],
 }
 
-const baseConfig = webpackConfigBase('production')
+const baseConfig = webpackConfigBase()
 
 const resultConfig = merge(baseConfig, webpackProdConfig)
 

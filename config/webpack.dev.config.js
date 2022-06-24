@@ -32,6 +32,6 @@ const webpackConfigDev = {
   },
 }
 
-const baseConfig = webpackConfigBase('development')
+const baseConfig = webpackConfigBase()
 
 module.exports = merge(baseConfig, webpackConfigDev)
