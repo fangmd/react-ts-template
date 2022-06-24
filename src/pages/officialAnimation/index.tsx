@@ -1,5 +1,3 @@
-import { useStore } from '@/store/context'
-import { observer } from 'mobx-react-lite'
 import React, { useState } from 'react'
 import Test from '@/components/Test'
 import { Link } from 'react-router-dom'
@@ -10,10 +8,10 @@ import './index.less'
 /**
  * 响应式 Demo
  * Medium	md	≥768px
- * 
+ *
  * Extra large	xl	≥1200px
  */
-const OfficialAnimationPage = observer(() => {
+const OfficialAnimationPage = () => {
   return (
     <div className="OfficialAnimationPage__root">
       <div>Banner</div>
@@ -45,6 +43,6 @@ const OfficialAnimationPage = observer(() => {
       <div className="container-xxl">100% wide until extra extra large breakpoint</div>
     </div>
   )
-})
+}
 
 export default OfficialAnimationPage

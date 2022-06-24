@@ -12,7 +12,7 @@ react-ts-h5
 - [x] Add normalize.css
 - [x] Less
 - [x] router
-- [x] mobx-react-lite
+- [x] recoil state manage
 - [x] axios
 - [x] ESLint
 - [x] Prettier

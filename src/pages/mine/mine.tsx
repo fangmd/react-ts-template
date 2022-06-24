@@ -1,17 +1,17 @@
-import { useStore } from '@/store/context'
-import { observer } from 'mobx-react-lite'
+import { userAtom } from '@/store/userStore'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useRecoilValue } from 'recoil'
 
-const MinePage = observer(() => {
-  const store = useStore()
+const MinePage = () => {
+  const user = useRecoilValue(userAtom)
   return (
     <>
       <h1 className="title">MinePage</h1>
-      <p>user name: {JSON.stringify(store)}</p>
+      <p>user atom: {JSON.stringify(user)}</p>
       <Link to="/home">To HomePage</Link>
     </>
   )
-})
+}
 
 export default MinePage

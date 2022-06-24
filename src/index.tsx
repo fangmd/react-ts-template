@@ -5,8 +5,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'normalize.css'
 import './assets/css/base.css'
 import '@/assets/css/base-tmp.less'
-import { Provider } from './store/context'
 import 'bootstrap/dist/css/bootstrap.css'
+import { RecoilRoot } from 'recoil'
 
 const HomePage = loadable(() => import(/* webpackChunkName: 'HomePage'*/ './pages/home'))
 const MinePage = loadable(() => import(/* webpackChunkName: 'MinePage'*/ './pages/mine/mine'))
@@ -18,7 +18,7 @@ const env = process.env.NODE_ENV
 console.log(env)
 
 const App = () => (
-  <Provider>
+  <RecoilRoot>
     <Suspense fallback={<div>Loading...</div>}>
       <BrowserRouter>
         <Routes>
@@ -31,7 +31,7 @@ const App = () => (
         </Routes>
       </BrowserRouter>
     </Suspense>
-  </Provider>
+  </RecoilRoot>
 )
 
 createRoot(document.getElementById('root')!).render(<App />)

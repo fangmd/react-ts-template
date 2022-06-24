@@ -1,15 +1,20 @@
-import { observable } from "mobx"
+import { atom, selector } from 'recoil'
 
-const store = observable({})
-
-export function createUserStore() {
-  return {
-    user: store,
-    get userInfo() {
-      return this.user
-    },
-    setUserName(name: string) {
-      (this.user as any).name = name
-    },
-  }
+interface User {
+  name: string
 }
+
+/** 用户信息 */
+export const userAtom = atom<User | undefined>({
+  key: 'user',
+  default: undefined,
+})
+
+/** 是否登录 */
+const isLoginAtom = selector({
+  key: 'isLogin',
+  get: ({ get }) => {
+    const user = get(userAtom)
+    return user?.name
+  },
+})
