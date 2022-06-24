@@ -1,4 +1,4 @@
-import { userAtom } from '@/store/userStore'
+import { userAtom } from '@/state/user/state'
 import { useSetRecoilState } from 'recoil'
 
 /** 自定义 hooks */

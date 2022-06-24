@@ -1,4 +1,4 @@
-import { userAtom } from '@/store/userStore'
+import { userAtom } from '@/state/user/state'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'

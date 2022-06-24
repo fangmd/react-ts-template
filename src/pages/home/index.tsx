@@ -3,8 +3,8 @@ import Test from '@/components/Test'
 import { Link } from 'react-router-dom'
 import './index.less'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { userAtom } from '@/store/userStore'
-import { useChangeUserName } from '@/hooks/useChangeUserName'
+import { userAtom } from '@/state/user/state'
+import { useChangeUserName } from '@/state/user/hooks'
 
 /** 优化刷新范围 */
 const NameComponent: React.FC = () => {
