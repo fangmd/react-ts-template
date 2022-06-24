@@ -17,6 +17,12 @@ const HomePage = observer(() => {
   const changeUserName = () => {
     console.log(store)
     store.userStore.setUserName('asds')
+    const a = { a: 1 }
+    const b = { b: 1 }
+    const c = Object.assign(a, b)
+    const { k } = c
+    console.log(c);
+    console.log(k);
   }
 
   return (

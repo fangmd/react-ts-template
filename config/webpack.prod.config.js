@@ -19,7 +19,7 @@ function getEchartZrenderPkgName(module) {
 const webpackProdConfig = {
   mode: 'production',
   entry: {
-    app: ['@babel/polyfill', path.join(__dirname, '../src', 'index.tsx')],
+    app: [path.join(__dirname, '../src', 'index.tsx')],
   },
   optimization: {
     minimize: true,
