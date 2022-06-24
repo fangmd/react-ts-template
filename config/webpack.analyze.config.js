@@ -35,7 +35,7 @@ const webpackProdConfig = {
       maxInitialRequests: 3,
       name: false,
       cacheGroups: {
-        vendor: {
+        defaultVendors: {
           name: 'vendor',
           chunks: 'initial',
           priority: -10,
