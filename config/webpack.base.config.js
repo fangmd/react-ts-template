@@ -45,6 +45,9 @@ module.exports = function () {
     output:{
       assetModuleFilename: 'static/media/[hash][ext][query]'
     },
+    cache: {
+      type: 'filesystem', // 使用文件缓存, 加快启动速度/打包速度
+    },
     module: {
       rules: [
         {
@@ -61,9 +64,9 @@ module.exports = function () {
             {
               test: /\.(ts|js)x?$/,
               exclude: /node_modules/,
-              use: {
+              use: ['thread-loader', {
                 loader: 'babel-loader?cacheDirectory=true',
-              },
+              }]
             },
             {
               test: /\.css$/,
