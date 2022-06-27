@@ -6,9 +6,34 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const copyWebpackPlugin = require('copy-webpack-plugin')
 
+function getGitVersionInfo() {
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      let fs = require('fs')
+      let gitHEAD = fs.readFileSync('.git/HEAD', 'utf-8').trim() // ref: refs/heads/master
+      let ref = gitHEAD.split(': ')[1] // refs/heads/master
+      let branchName = gitHEAD.split('/')[2] // master
+      let gitVersion = fs.readFileSync('.git/' + ref, 'utf-8').trim() // git版本号，例如：db3b1d0e91f41026ebf50fc20a17df8a5317dd57
+      let gitCommitVersion = '"' + branchName + ': ' + gitVersion + '"' // 例如dev环境: "master: db3b1d0e91f41026ebf50fc20a17df8a5317dd57"
+      return gitCommitVersion
+    } catch (error) {
+      console.log(error)
+      return ''
+    }
+  } else {
+    return ''
+  }
+}
+
+//用于标记项目发布时间
+process.env.APP_BUILD_TIME = new Date().toString() + getGitVersionInfo()
+const APP_BUILD_TIME = process.env.APP_BUILD_TIME
+
 module.exports = function () {
   // const isEnvDevelopment = process.env.NODE_ENV === 'development'
   const isEnvProduction = process.env.NODE_ENV === 'production'
+
+  process.env.APP_BUILD_TIME = '12121'
 
   return {
     target: 'web',
@@ -138,6 +163,7 @@ module.exports = function () {
       new HtmlWebpackPlugin({
         template: path.join(__dirname, '../public', 'index.html'),
         favicon: 'public/favicon.ico',
+        APP_BUILD_TIME: APP_BUILD_TIME
       }),
       new MiniCssExtractPlugin({
         filename: 'static/css/[name].[contenthash:8].css',

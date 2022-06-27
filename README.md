@@ -18,6 +18,7 @@ react-ts-h5
 - [x] Prettier
 - [ ] CDN
 - [x] css 添加前缀(npm install autoprefixer postcss postcss-loader -D)
+- [x] show build time
 
 ## webpack
 
