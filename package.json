@@ -8,11 +8,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=development webpack serve --open --config ./config/webpack.dev.config.js --mode development --hot",
-    "start2": "NODE_ENV=production webpack serve --open --config ./config/webpack.dev.config.js --mode production --hot",
-    "build": "NODE_ENV=production  webpack --config ./config/webpack.prod.config.js --mode production",
-    "buildSpeed": "NODE_ENV=production  webpack --config ./config/webpack.speed.config.js --mode production",
-    "analyze": "NODE_ENV=production  webpack --config ./config/webpack.analyze.config.js --mode production"
+    "start": "cross-env NODE_ENV=development webpack serve --open --config ./config/webpack.dev.config.js --hot",
+    "build": "cross-env NODE_ENV=production  webpack --config ./config/webpack.prod.config.js",
+    "analyze": "cross-env NODE_ENV=production  webpack --config ./config/webpack.analyze.config.js"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +35,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "compression-webpack-plugin": "^9.2.0",
     "copy-webpack-plugin": "^9.1.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^3.4.1",
     "cssnano-preset-advanced": "^5.3.8",
