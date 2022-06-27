@@ -33,8 +33,6 @@ module.exports = function () {
   // const isEnvDevelopment = process.env.NODE_ENV === 'development'
   const isEnvProduction = process.env.NODE_ENV === 'production'
 
-  process.env.APP_BUILD_TIME = '12121'
-
   return {
     target: 'web',
     resolve: {

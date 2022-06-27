@@ -29,9 +29,11 @@ const webpackProdConfig = {
     minimizer: [
       new TerserPlugin(),
       new CssMinimizerPlugin({
-        minimizerOptions: {
-          preset: 'advanced',
-        },
+        parallel: true,
+        // 有 bug 不要开启，使用后 build 下，base.css 没有被打包
+        // minimizerOptions: {
+        //   preset: 'advanced',
+        // },
       }),
     ], // [new UglifyJsPlugin({...})]
     splitChunks: {
@@ -49,14 +51,15 @@ const webpackProdConfig = {
           reuseExistingChunk: true,
           test: /node_modules\/(.*)\.js/,
         },
-        styles: {
-          name: 'styles',
-          test: /\.(less|css)$/,
-          chunks: 'all',
-          minChunks: 1,
-          reuseExistingChunk: true,
-          enforce: true,
-        },
+        // 把所有 css 打包到一个文件
+        // styles: {
+        //   name: 'styles',
+        //   test: /\.(less|css)$/,
+        //   chunks: 'all',
+        //   minChunks: 1,
+        //   reuseExistingChunk: true,
+        //   enforce: true,
+        // },
         vendorEcharts: {
           chunks: 'async',
           test: /[\\/]node_modules[\\/](echarts|zrender)([\\/]|$)/,

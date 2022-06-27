@@ -34,7 +34,7 @@ const HomePage = () => {
 
   return (
     <div className="Home">
-      <h1 className="title">HomePage</h1>
+      <h1 className="title">Home Page a b c</h1>
       <Test />
       <button onClick={testGetRequest}>Test get requestTest</button>
       <p>{getResult}</p>

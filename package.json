@@ -9,6 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=development webpack serve --open --config ./config/webpack.dev.config.js --mode development --hot",
+    "start2": "NODE_ENV=production webpack serve --open --config ./config/webpack.dev.config.js --mode production --hot",
     "build": "NODE_ENV=production  webpack --config ./config/webpack.prod.config.js --mode production",
     "buildSpeed": "NODE_ENV=production  webpack --config ./config/webpack.speed.config.js --mode production",
     "analyze": "NODE_ENV=production  webpack --config ./config/webpack.analyze.config.js --mode production"

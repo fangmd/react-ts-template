@@ -6,3 +6,13 @@ h1 {
 h2 {
   background: url('https://pic4.58cdn.com.cn/nowater/fangfe/n_v2f3c1640a5ac84b67bc9c394342fb3728.png');
 }
+
+@font-face {
+  font-family: 'AaManYuShouXieTi';
+  src: url('../fonts/AaManYuShouXieTi.ttf');
+}
+
+@font-face {
+  font-family: 'Smooch-Regular';
+  src: url('../../assets/fonts/Smooch-Regular.ttf');
+}
