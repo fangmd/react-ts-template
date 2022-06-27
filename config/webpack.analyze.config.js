@@ -23,12 +23,12 @@ const webpackProdConfig = {
       new TerserPlugin(),
       new CssMinimizerPlugin({
         parallel: true,
-        // 有 bug 不要开启，使用后 build 下，base.css 没有被打包
+        // 以下配置还有问题，不要开启，使用后 build 下，base.css 没有被打包
         // minimizerOptions: {
         //   preset: 'advanced',
         // },
       }),
-    ], // [new UglifyJsPlugin({...})]
+    ],
     splitChunks: {
       chunks: 'async',
       minSize: 30000,
@@ -52,6 +52,12 @@ const webpackProdConfig = {
         //   minChunks: 1,
         //   reuseExistingChunk: true,
         //   enforce: true,
+        // },
+        // vendorReact: {
+        //   chunks: 'all',
+        //   test: /[\\/]node_modules[\\/](react-dom|react)([\\/]|$)/,
+        //   name: 'vendorReact',
+        //   priority: 31,
         // },
       },
     },

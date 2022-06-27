@@ -30,12 +30,12 @@ const webpackProdConfig = {
       new TerserPlugin(),
       new CssMinimizerPlugin({
         parallel: true,
-        // 有 bug 不要开启，使用后 build 下，base.css 没有被打包
+        // 以下配置还有问题，不要开启，使用后 build 下，base.css 没有被打包
         // minimizerOptions: {
         //   preset: 'advanced',
         // },
       }),
-    ], // [new UglifyJsPlugin({...})]
+    ],
     splitChunks: {
       chunks: 'async',
       minSize: 30000,
@@ -60,16 +60,22 @@ const webpackProdConfig = {
         //   reuseExistingChunk: true,
         //   enforce: true,
         // },
-        vendorEcharts: {
-          chunks: 'async',
-          test: /[\\/]node_modules[\\/](echarts|zrender)([\\/]|$)/,
-          name: 'vendorEcharts',
-          name(module, chunks, cacheGroupKey) {
-            const name = getEchartZrenderPkgName(module);
-            return `vendor-${name}`;
-          },
-          priority: 31,
-        },
+        // vendorReact: {
+        //   chunks: 'all',
+        //   test: /[\\/]node_modules[\\/](react-dom|react)([\\/]|$)/,
+        //   name: 'vendorReact',
+        //   priority: 31,
+        // },
+        // vendorEcharts: {
+        //   chunks: 'async',
+        //   test: /[\\/]node_modules[\\/](echarts|zrender)([\\/]|$)/,
+        //   name: 'vendorEcharts',
+        //   name(module, chunks, cacheGroupKey) {
+        //     const name = getEchartZrenderPkgName(module);
+        //     return `vendor-${name}`;
+        //   },
+        //   priority: 31,
+        // },
         // 抽离 antd-vue
           // vendorAntd: {
           //   chunks: 'async',
