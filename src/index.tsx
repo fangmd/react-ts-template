@@ -13,6 +13,7 @@ const MinePage = loadable(() => import(/* webpackChunkName: 'MinePage'*/ './page
 const OfficialAnimationPage = loadable(() => import(/* webpackChunkName: 'MinePage'*/ './pages/officialAnimation'))
 const ContextDemo = loadable(() => import(/* webpackChunkName: 'MinePage'*/ './pages/ContextDemo'))
 const ScopeStoreDemo = loadable(() => import(/* webpackChunkName: 'MinePage'*/ './pages/ScopeStoreDemo'))
+const EarthDemo = loadable(() => import(/* webpackChunkName: 'MinePage'*/ './pages/EarthDemo'))
 
 const env = process.env.NODE_ENV
 console.log(env)
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/official" element={<OfficialAnimationPage />}></Route>
           <Route path="/context-demo" element={<ContextDemo />}></Route>
           <Route path="/scope-store-demo" element={<ScopeStoreDemo />}></Route>
+          <Route path="/earth-demo" element={<EarthDemo />}></Route>
         </Routes>
       </BrowserRouter>
     </Suspense>
