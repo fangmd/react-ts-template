@@ -20,12 +20,13 @@ console.log(env)
 
 const App = () => (
   <RecoilRoot>
+    {/* <EarthDemo /> */}
     <Suspense fallback={<div>Loading...</div>}>
       <BrowserRouter>
         <Routes>
           <Route path="/mine" element={<MinePage />}></Route>
           <Route path="/home" element={<HomePage />}></Route>
-          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/" element={<EarthDemo />}></Route>
           <Route path="/official" element={<OfficialAnimationPage />}></Route>
           <Route path="/context-demo" element={<ContextDemo />}></Route>
           <Route path="/scope-store-demo" element={<ScopeStoreDemo />}></Route>
